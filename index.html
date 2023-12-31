@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="to-do">
+            <h2>To-Do List</h2>
+            <div class="search">
+                <input type="text" id="inputBox" placeholder="Enter your task">
+                <button onclick="add()">Add Task</button>
+            </div>
+            <ul id="list-container">
+                <!-- <li class="checked">hi</li>
+                <li>helo</li> -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const inputBox = document.getElementById("inputBox");
+        const listContainer = document.getElementById("list-container");
+
+        function add() {
+            if (inputBox.value === "") {
+                alert("You must write something");
+            } else {
+                let li = document.createElement('li');
+                li.innerHTML = inputBox.value;
+                listContainer.appendChild(li);
+
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+            }
+            inputBox.value = "";
+            saveData()
+            inputBox.focus();
+        }
+
+        listContainer.addEventListener("click", function (e) {
+            if (e.target.tagName === "LI") {
+                e.target.classList.toggle("checked");
+                saveData()
+            } else if (e.target.tagName === "SPAN") {
+                e.target.parentElement.remove();
+                saveData()
+            }
+        }, false);
+
+        function saveData() {
+            localStorage.setItem("data", listContainer.innerHTML);
+        }
+
+        function showData() {
+            listContainer.innerHTML = localStorage.getItem("data");
+        }
+        showData();
+    </script>
+</body>
+
+</html>

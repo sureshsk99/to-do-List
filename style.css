@@ -1,0 +1,125 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    padding:10px;
+    color:chartreuse;
+    background-color: rgb(44, 44, 44);
+}
+.to-do{
+    width:100%;
+    max-width: 540px;
+    background-color: black;
+    border-radius: 10px;
+    margin:100px auto 20px;
+    padding:40px 30px 70px; 
+    color:chartreuse;
+}
+.to-do h2{
+    text-align: center;
+    font-weight: 400px;
+    color:chartreuse;
+}
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: 5%;
+    margin-bottom: 30px;
+    padding:8px;
+}
+.search input{
+    flex:1;
+    padding:8px;
+    text-indent: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border:none;
+    outline: none;
+    background-color: chartreuse;
+    color:black;
+}
+.search button{
+    padding:8px;
+    border: 3px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color:black;
+    background-color:white;
+}
+ul li{
+    list-style: none;
+    user-select: none;
+    font-size:20px;
+    padding: 15px 8px 12px 50px;
+    cursor: pointer;
+    position:relative;
+}
+ul li{
+    color:chartreuse;
+}
+ul li::before{
+    content:"";
+    position: absolute;
+    top: 8px;
+    left:8px;
+    height:28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url('images/unchecked.png');
+    background-size: cover;
+    background-position: center;
+}
+ul li.checked{
+    color:chartreuse;
+    text-decoration: line-through;
+}
+ul li.checked::before{
+    background-image: url('images/checked.png');
+}
+span{
+    position: absolute;
+    right:0;
+    top:5px;
+    width:40px;
+    height:40px;
+    font-size:22px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+ul li span:hover{
+    background-color: rgb(56, 55, 55);
+}
+
+@media only screen and (max-width:600px){
+    .to-do{
+        padding:40px 20px 70px; 
+    }
+    .search input{
+        padding:7px;
+    }
+    .search button{
+        padding:7px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .to-do{
+        padding:30px 15px 60px; 
+    }
+    .search input{
+        padding:5px;
+    }
+    .search button{
+        padding:5px;
+    }
+}
